@@ -110,8 +110,20 @@ const Features = () => {
       </section>
 
       {/* Elite Club Section */}
-      <section className="w-full py-12 sm:py-16 md:py-20 lg:py-24 bg-[#1A1A1A] border-t border-white/10">
-        <div className="max-w-[2000px] mx-auto px-4 sm:px-6 md:px-8">
+      <section className="w-full py-12 sm:py-16 md:py-20 lg:py-24 bg-[#1A1A1A] border-t border-white/10 relative overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0">
+          <Image
+            src="/imgs/future.png"
+            alt="Future Background"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/70" />
+        </div>
+
+        <div className="max-w-[2000px] mx-auto px-4 sm:px-6 md:px-8 relative z-10">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
