@@ -202,19 +202,20 @@ const Features = () => {
       {/* Gold Card Section */}
       <section className="w-full py-12 sm:py-16 md:py-20 lg:py-24 bg-[#1A1A1A] border-t border-white/10 relative overflow-hidden">
         {/* Twinkling Stars Container */}
-        <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(26,26,26,0.8)_0%,#1A1A1A_100%)]">
           {[...Array(50)].map((_, i) => (
             <div
               key={i}
-              className={`absolute w-[2px] h-[2px] bg-[#D4AF37] rounded-full
-                animate-twinkle opacity-0
-                ${i % 2 === 0 ? 'scale-[0.5]' : 'scale-[0.75]'}
-              `}
+              className="star absolute rounded-full"
               style={{
+                width: `${Math.random() * 3 + 1}px`,
+                height: `${Math.random() * 3 + 1}px`,
                 top: `${Math.random() * 100}%`,
                 left: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 8}s`,
-                animationDuration: `${4 + Math.random() * 4}s`
+                backgroundColor: `rgba(${
+                  Math.random() > 0.5 ? '212,175,55' : '255,215,0'
+                },${Math.random() * 0.7 + 0.3})`,
+                animation: `twinkle ${Math.random() * 3 + 2}s ease-in-out infinite ${Math.random() * 3}s`
               }}
             />
           ))}
@@ -376,7 +377,7 @@ const Features = () => {
   );
 };
 
-// Add shimmer animation at the top of the file
+// Update the shimmer animation at the bottom of the file
 const shimmerAnimation = `
   @keyframes shimmer {
     0% { background-position: 200% 50%; }
@@ -387,21 +388,31 @@ const shimmerAnimation = `
   }
 
   @keyframes twinkle {
-    0%, 100% { 
+    0%, 100% {
       opacity: 0;
       transform: scale(0.5);
+      filter: blur(1px);
     }
-    50% { 
-      opacity: 0.8;
-      transform: scale(1);
-    }
-    75% {
-      opacity: 0.5;
-      transform: scale(0.75);
+    50% {
+      opacity: 1;
+      transform: scale(1.2);
+      filter: blur(0px);
     }
   }
-  .animate-twinkle {
-    animation: twinkle var(--twinkle-duration, 4s) ease-in-out infinite;
+
+  .star {
+    box-shadow: 0 0 10px 2px rgba(212,175,55,0.4);
+  }
+
+  .star::after {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    right: -100%;
+    bottom: -100%;
+    background: radial-gradient(circle, rgba(212,175,55,0.4) 0%, transparent 70%);
+    border-radius: 50%;
   }
 `;
 
