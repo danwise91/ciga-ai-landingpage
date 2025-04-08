@@ -200,18 +200,176 @@ const Features = () => {
       </section>
 
       {/* Gold Card Section */}
-      <section className="w-full py-12 sm:py-16 md:py-20 lg:py-24 bg-[#1A1A1A] border-t border-white/10">
-        <div className="max-w-[2000px] mx-auto px-4 sm:px-6 md:px-8">
+      <section className="w-full py-12 sm:py-16 md:py-20 lg:py-24 bg-[#1A1A1A] border-t border-white/10 relative overflow-hidden">
+        {/* Twinkling Stars Container */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(50)].map((_, i) => (
+            <div
+              key={i}
+              className={`absolute w-[2px] h-[2px] bg-[#D4AF37] rounded-full
+                animate-twinkle opacity-0
+                ${i % 2 === 0 ? 'scale-[0.5]' : 'scale-[0.75]'}
+              `}
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 8}s`,
+                animationDuration: `${4 + Math.random() * 4}s`
+              }}
+            />
+          ))}
+        </div>
+
+        <div className="max-w-[2000px] mx-auto px-4 sm:px-6 md:px-8 relative z-10">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-center relative
               animate-shimmer bg-clip-text text-transparent bg-[linear-gradient(to_right,#D4AF37_20%,#FFF_40%,#D4AF37_60%)] 
-              bg-[length:200%_auto] transition-all"
+              bg-[length:200%_auto] transition-all mb-8 sm:mb-12"
           >
             Ciga Gold Card - Your VIP Pass
           </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-lg sm:text-xl md:text-2xl text-white/80 max-w-4xl leading-relaxed text-center mx-auto mb-16 sm:mb-20"
+          >
+            Each digital golden pass grants a <span className="text-[#D4AF37] font-bold">lifetime</span> membership to the Ciga Cigar Club to who ever holds it. All holders are free to attend any networking events and earn exclusive Ciga rewards.
+          </motion.p>
+
+          {/* Three Columns Section */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8 max-w-[2000px] mx-auto">
+            {/* Left Column */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="text-center md:text-left flex items-center justify-center"
+            >
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+                className="relative w-full max-w-md"
+              >
+                <Image
+                  src="/imgs/vip.png"
+                  alt="VIP Access"
+                  width={500}
+                  height={500}
+                  className="w-full h-auto rounded-lg"
+                  priority
+                />
+              </motion.div>
+            </motion.div>
+
+            {/* Center Column */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="text-center relative overflow-hidden rounded-2xl
+                bg-gradient-to-br from-[#D4AF37]/10 via-[#FFD700]/20 to-[#D4AF37]/10
+                border border-[#D4AF37]/30 backdrop-blur-sm
+                p-8 sm:p-10
+                shadow-[0_8px_32px_-8px_rgba(212,175,55,0.3)]"
+            >
+              <motion.h3
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="text-2xl sm:text-3xl font-bold text-[#D4AF37] mb-8
+                  animate-shimmer bg-clip-text bg-[linear-gradient(to_right,#D4AF37_20%,#FFF_40%,#D4AF37_60%)] 
+                  bg-[length:200%_auto] transition-all"
+              >
+                LIMITED SUPPLY!
+              </motion.h3>
+              <ul className="space-y-6 text-white text-lg sm:text-xl">
+                <motion.li
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5 }}
+                  className="flex items-center justify-center space-x-2 font-medium"
+                >
+                  <span className="text-[#D4AF37] text-2xl">•</span>
+                  <span>Only 500 passes available!</span>
+                </motion.li>
+                <motion.li
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.6 }}
+                  className="flex items-center justify-center space-x-2 font-medium"
+                >
+                  <span className="text-[#D4AF37] text-2xl">•</span>
+                  <span>As supply goes down, price goes up</span>
+                </motion.li>
+                <motion.li
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.7 }}
+                  className="flex items-center justify-center space-x-2 font-medium"
+                >
+                  <span className="text-[#D4AF37] text-2xl">•</span>
+                  <span>Minted on the Polygon blockchain</span>
+                </motion.li>
+                <motion.li
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.8 }}
+                  className="flex items-center justify-center space-x-2 font-medium"
+                >
+                  <span className="text-[#D4AF37] text-2xl">•</span>
+                  <span>Perfect for startup pitches, funding seeking, and networking</span>
+                </motion.li>
+              </ul>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.75 }}
+                className="text-lg text-white/80 max-w-xs mx-auto mt-8 mb-6"
+              >
+                Sign up for a Ciga account for alerts when our passes drop
+              </motion.p>
+
+              <motion.button
+                whileHover={{ 
+                  scale: 1.05,
+                  boxShadow: "0 10px 30px -10px rgba(212,175,55,0.5)"
+                }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.8 }}
+                className="mt-4 px-8 py-3 relative overflow-hidden
+                  bg-gradient-to-r from-[#D4AF37] via-[#FFD700] to-[#D4AF37]
+                  text-white font-medium text-lg rounded-full 
+                  border border-[#D4AF37]/30
+                  shadow-[0_5px_15px_-5px_rgba(212,175,55,0.3)]
+                  before:content-['']
+                  before:absolute before:inset-0
+                  before:bg-gradient-to-b from-white/40 to-transparent
+                  before:rounded-full
+                  hover:from-[#FFD700] hover:via-[#D4AF37] hover:to-[#FFD700]
+                  transition-all duration-300
+                  animate-shimmer bg-[length:200%_auto]"
+              >
+                Get Account
+              </motion.button>
+            </motion.div>
+          </div>
         </div>
       </section>
     </>
@@ -226,6 +384,24 @@ const shimmerAnimation = `
   }
   .animate-shimmer {
     animation: shimmer 6s linear infinite;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { 
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    50% { 
+      opacity: 0.8;
+      transform: scale(1);
+    }
+    75% {
+      opacity: 0.5;
+      transform: scale(0.75);
+    }
+  }
+  .animate-twinkle {
+    animation: twinkle var(--twinkle-duration, 4s) ease-in-out infinite;
   }
 `;
 
