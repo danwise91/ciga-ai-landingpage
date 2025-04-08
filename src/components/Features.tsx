@@ -179,20 +179,32 @@ const Features = () => {
               className="flex flex-col gap-8 lg:w-[300px]"
             >
               <div className="space-y-8">
-                <Image
-                  src="/imgs/bybit.png"
-                  alt="Bybit Logo"
-                  width={200}
-                  height={60}
-                  className="filter grayscale opacity-70 hover:opacity-90 transition-opacity"
-                />
-                <Image
-                  src="/imgs/polygon.jpg"
-                  alt="Polygon Logo"
-                  width={200}
-                  height={60}
-                  className="filter grayscale opacity-70 hover:opacity-90 transition-opacity"
-                />
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                >
+                  <Image
+                    src="/imgs/bybit.png"
+                    alt="Bybit Logo"
+                    width={200}
+                    height={60}
+                    className="filter grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300"
+                  />
+                </motion.div>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                >
+                  <Image
+                    src="/imgs/polygon.jpg"
+                    alt="Polygon Logo"
+                    width={200}
+                    height={60}
+                    className="filter grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300"
+                  />
+                </motion.div>
               </div>
             </motion.div>
           </div>
