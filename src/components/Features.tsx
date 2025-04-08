@@ -7,7 +7,7 @@ const Features = () => {
   return (
     <>
       {/* Premium Cigars Section */}
-      <section className="w-full py-12 sm:py-16 md:py-20 lg:py-24 bg-[#1A1A1A]">
+      <section id="features-section" className="w-full py-12 sm:py-16 md:py-20 lg:py-24 bg-[#1A1A1A]">
         <div className="max-w-[2000px] mx-auto px-4 sm:px-6 md:px-8">
           {/* Section Title */}
           <motion.h2
@@ -198,8 +198,42 @@ const Features = () => {
           </div>
         </div>
       </section>
+
+      {/* Gold Card Section */}
+      <section className="w-full py-12 sm:py-16 md:py-20 lg:py-24 bg-[#1A1A1A] border-t border-white/10">
+        <div className="max-w-[2000px] mx-auto px-4 sm:px-6 md:px-8">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-center relative
+              animate-shimmer bg-clip-text text-transparent bg-[linear-gradient(to_right,#D4AF37_20%,#FFF_40%,#D4AF37_60%)] 
+              bg-[length:200%_auto] transition-all"
+          >
+            Ciga Gold Card - Your VIP Pass
+          </motion.h2>
+        </div>
+      </section>
     </>
   );
 };
+
+// Add shimmer animation at the top of the file
+const shimmerAnimation = `
+  @keyframes shimmer {
+    0% { background-position: 200% 50%; }
+    100% { background-position: -200% 50%; }
+  }
+  .animate-shimmer {
+    animation: shimmer 6s linear infinite;
+  }
+`;
+
+// Add style tag to the document head
+if (typeof document !== 'undefined') {
+  const style = document.createElement('style');
+  style.textContent = shimmerAnimation;
+  document.head.appendChild(style);
+}
 
 export default Features; 

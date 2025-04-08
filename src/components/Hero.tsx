@@ -3,6 +3,13 @@
 import { motion } from 'framer-motion';
 
 const Hero = () => {
+  const scrollToNextSection = () => {
+    const nextSection = document.querySelector('#features-section');
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#1A1A1A]">
       {/* Video Background */}
@@ -38,13 +45,45 @@ const Hero = () => {
             Crafted for connection, reserved for the ambitious
           </h2>
 
-          <div className="pt-8">
+          <div className="pt-8 flex flex-col items-center gap-8">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 bg-[#D4AF37] text-[#1A1A1A] font-medium text-lg rounded-full hover:bg-[#D4AF37]/90 transition-colors"
             >
-              Join Ciga
+              Sign Up
+            </motion.button>
+
+            {/* Animated Arrow */}
+            <motion.button
+              onClick={scrollToNextSection}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              animate={{
+                y: [0, 8, 0],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className="w-12 h-12 rounded-full border-2 border-[#D4AF37]/30 flex items-center justify-center
+                bg-gradient-to-r from-[#D4AF37] via-[#FFF] to-[#D4AF37] bg-[length:200%_auto]
+                animate-shimmer cursor-pointer group"
+            >
+              <svg
+                className="w-6 h-6 text-[#1A1A1A] transform transition-transform group-hover:translate-y-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2.5}
+                  d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                />
+              </svg>
             </motion.button>
           </div>
         </motion.div>
@@ -52,5 +91,23 @@ const Hero = () => {
     </section>
   );
 };
+
+// Add shimmer animation
+const shimmerAnimation = `
+  @keyframes shimmer {
+    0% { background-position: 200% 50%; }
+    100% { background-position: -200% 50%; }
+  }
+  .animate-shimmer {
+    animation: shimmer 6s linear infinite;
+  }
+`;
+
+// Add style tag to the document head
+if (typeof document !== 'undefined') {
+  const style = document.createElement('style');
+  style.textContent = shimmerAnimation;
+  document.head.appendChild(style);
+}
 
 export default Hero; 
