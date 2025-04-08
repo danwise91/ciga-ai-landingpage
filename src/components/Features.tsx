@@ -7,8 +7,22 @@ const Features = () => {
   return (
     <>
       {/* Premium Cigars Section */}
-      <section id="features-section" className="w-full py-12 sm:py-16 md:py-20 lg:py-24 bg-[#1A1A1A]">
-        <div className="max-w-[2000px] mx-auto px-4 sm:px-6 md:px-8">
+      <section id="features-section" className="w-full py-12 sm:py-16 md:py-20 lg:py-24 bg-[#1A1A1A] relative overflow-hidden">
+        {/* Video Background */}
+        <div className="absolute inset-0">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="/vid/fall.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-black/70" />
+        </div>
+
+        <div className="max-w-[2000px] mx-auto px-4 sm:px-6 md:px-8 relative z-10">
           {/* Section Title */}
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -148,8 +162,22 @@ const Features = () => {
       </section>
 
       {/* Ciga Club Section */}
-      <section className="w-full py-12 sm:py-16 md:py-20 lg:py-24 bg-[#1A1A1A] border-t border-white/10">
-        <div className="max-w-[2000px] mx-auto px-4 sm:px-6 md:px-8">
+      <section className="w-full py-12 sm:py-16 md:py-20 lg:py-24 bg-[#1A1A1A] border-t border-white/10 relative overflow-hidden">
+        {/* Video Background */}
+        <div className="absolute inset-0">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="/vid/lite.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-black/70" />
+        </div>
+
+        <div className="max-w-[2000px] mx-auto px-4 sm:px-6 md:px-8 relative z-10">
           <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-12">
             <div className="lg:max-w-3xl">
               <motion.h2
