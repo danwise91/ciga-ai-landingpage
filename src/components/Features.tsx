@@ -2,49 +2,106 @@
 
 import { motion } from 'framer-motion';
 
-const features = [
-  {
-    title: "Premium Quality",
-    subtitle: "Made for luxury",
-    description: "Each Ciga cigar is hand-made with only the finest ingredients, crafted for those who appreciate the finer things in life.",
-  },
-  {
-    title: "Exclusive Network",
-    subtitle: "Built for connection",
-    description: "Join an elite network of ambitious individuals. Ciga cigars are your key to high-profile networking events and exclusive gatherings.",
-  },
-  {
-    title: "Unmatched Experience",
-    subtitle: "Designed for excellence",
-    description: "From the first draw to the last puff, experience luxury like never before. Every detail is crafted for perfection.",
-  },
-];
-
 const Features = () => {
   return (
-    <section className="w-full py-32 px-4 md:px-8 bg-[#1A1A1A]">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              viewport={{ once: true }}
-              className="text-left"
-            >
-              <h3 className="text-3xl md:text-4xl font-serif font-bold text-[#D4AF37] mb-4">
-                {feature.title}
-              </h3>
-              <p className="text-xl text-white/90 font-light mb-6">
-                {feature.subtitle}
-              </p>
-              <p className="text-lg text-white/80 font-light leading-relaxed">
-                {feature.description}
-              </p>
-            </motion.div>
-          ))}
+    <section className="w-full py-24 bg-[#1A1A1A]">
+      <div className="max-w-[2000px] mx-auto px-4 md:px-8">
+        {/* Section Title */}
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#D4AF37] mb-6 text-left"
+        >
+          Premium cigars made for innovators
+        </motion.h2>
+        
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="text-xl md:text-2xl text-white/80 max-w-3xl mb-24 text-left"
+        >
+          Ciga Cigars aren't just great for any event, they're also your key to top-tier networking.
+        </motion.p>
+
+        {/* Features Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+            whileTap={{ scale: 0.98 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="space-y-4 p-8 rounded-lg border border-white/10 hover:border-[#D4AF37]/50 transition-colors cursor-pointer bg-white/5"
+          >
+            <h3 className="text-[#D4AF37] text-2xl md:text-3xl font-serif">Premium Quality</h3>
+            <p className="text-white/60 text-lg">Made for luxury</p>
+            <p className="text-white/80 leading-relaxed">
+              Each Ciga cigar is hand-made with only the finest ingredients, crafted for those who appreciate the finer things in life.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+            whileTap={{ scale: 0.98 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="space-y-4 p-8 rounded-lg border border-white/10 hover:border-[#D4AF37]/50 transition-colors cursor-pointer bg-white/5"
+          >
+            <h3 className="text-[#D4AF37] text-2xl md:text-3xl font-serif">Exclusive Network</h3>
+            <p className="text-white/60 text-lg">Built for connection</p>
+            <p className="text-white/80 leading-relaxed">
+              Join an elite network of ambitious individuals. Ciga cigars are your key to high-profile networking events and exclusive gatherings.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+            whileTap={{ scale: 0.98 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.6 }}
+            className="space-y-4 p-8 rounded-lg border border-white/10 hover:border-[#D4AF37]/50 transition-colors cursor-pointer bg-white/5"
+          >
+            <h3 className="text-[#D4AF37] text-2xl md:text-3xl font-serif">Unmatched Experience</h3>
+            <p className="text-white/60 text-lg">Designed for excellence</p>
+            <p className="text-white/80 leading-relaxed">
+              From the first draw to the last puff, experience luxury like never before. Every detail is crafted for perfection.
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Purchase Button */}
+        <div className="flex justify-center mt-20">
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{ 
+              scale: 1.02,
+              boxShadow: "0 10px 30px -10px rgba(205, 127, 50, 0.5)"
+            }}
+            whileTap={{ scale: 0.98 }}
+            viewport={{ once: true }}
+            className="relative px-16 py-5 text-xl font-medium rounded-full
+              bg-gradient-to-r from-[#B87333] via-[#DAA520] to-[#B87333]
+              text-white
+              border border-[#CD7F32]/30
+              shadow-[0_5px_15px_-5px_rgba(205,127,50,0.3)]
+              before:content-['']
+              before:absolute before:inset-0
+              before:bg-gradient-to-b from-white/20 to-transparent
+              before:rounded-full
+              hover:from-[#CD7F32] hover:via-[#DAA520] hover:to-[#CD7F32]
+              transition-all duration-300"
+          >
+            Purchase Cigars
+          </motion.button>
         </div>
       </div>
     </section>
