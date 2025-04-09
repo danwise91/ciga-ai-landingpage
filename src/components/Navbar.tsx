@@ -33,7 +33,7 @@ const Navbar = () => {
             onClick={scrollToTop}
           >
             <Image
-              src="/imgs/logo.png"
+              src="/imgs/logo.jpg"
               alt="Ciga Logo"
               width={50}
               height={50}
