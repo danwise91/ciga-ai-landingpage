@@ -47,6 +47,7 @@ const Features = () => {
             loop
             muted
             playsInline
+            preload="auto"
             className="absolute inset-0 w-full h-full object-cover"
           >
             <source src="/vid/fall.mp4" type="video/mp4" />
@@ -202,6 +203,7 @@ const Features = () => {
             loop
             muted
             playsInline
+            preload="auto"
             className="absolute inset-0 w-full h-full object-cover"
           >
             <source src="/vid/lite.mp4" type="video/mp4" />
