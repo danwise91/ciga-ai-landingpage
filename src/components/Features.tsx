@@ -124,7 +124,7 @@ const Features = () => {
       </section>
 
       {/* Elite Club Section */}
-      <section className="w-full py-12 sm:py-16 md:py-20 lg:py-24 bg-[#1A1A1A] border-t border-white/10 relative overflow-hidden">
+      <section id="elite-club-section" className="w-full py-12 sm:py-16 md:py-20 lg:py-24 bg-[#1A1A1A] border-t border-white/10 relative overflow-hidden">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0">
           <Image
@@ -162,7 +162,7 @@ const Features = () => {
       </section>
 
       {/* Ciga Club Section */}
-      <section className="w-full py-12 sm:py-16 md:py-20 lg:py-24 bg-[#1A1A1A] border-t border-white/10 relative overflow-hidden">
+      <section id="ciga-club-section" className="w-full py-12 sm:py-16 md:py-20 lg:py-24 bg-[#1A1A1A] border-t border-white/10 relative overflow-hidden">
         {/* Video Background */}
         <div className="absolute inset-0">
           <video
@@ -252,7 +252,7 @@ const Features = () => {
       </section>
 
       {/* Gold Card Section */}
-      <section className="w-full py-12 sm:py-16 md:py-20 lg:py-24 bg-[#1A1A1A] border-t border-white/10 relative overflow-hidden">
+      <section id="gold-card-section" className="w-full py-12 sm:py-16 md:py-20 lg:py-24 bg-[#1A1A1A] border-t border-white/10 relative overflow-hidden">
         {/* Twinkling Stars Container */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(26,26,26,0.8)_0%,#1A1A1A_100%)]">
           {[...Array(50)].map((_, i) => (
