@@ -1,19 +1,23 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import Link from 'next/link';
+import { useState } from 'react';
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+      setIsOpen(false); // Close menu after clicking
     }
   };
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    setIsOpen(false); // Close menu after clicking
   };
 
   return (
@@ -36,8 +40,8 @@ const Navbar = () => {
           />
         </motion.button>
 
-        {/* Navigation Links */}
-        <div className="flex items-center space-x-6 sm:space-x-8 md:space-x-10">
+        {/* Desktop Navigation */}
+        <div className="hidden lg:flex items-center space-x-6 sm:space-x-8 md:space-x-10">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -74,7 +78,69 @@ const Navbar = () => {
             Gold Passes
           </motion.button>
         </div>
+
+        {/* Mobile Menu Button */}
+        <motion.button
+          className="lg:hidden flex flex-col justify-center items-center w-10 h-10"
+          onClick={() => setIsOpen(!isOpen)}
+          whileTap={{ scale: 0.95 }}
+        >
+          <span className={`block w-6 h-0.5 bg-[#D4AF37] transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-1.5' : 'mb-1.5'}`} />
+          <span className={`block w-6 h-0.5 bg-[#D4AF37] transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`} />
+          <span className={`block w-6 h-0.5 bg-[#D4AF37] transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-1.5' : 'mt-1.5'}`} />
+        </motion.button>
       </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="lg:hidden absolute top-20 left-0 right-0 bg-black/90 backdrop-blur-sm border-b border-white/10"
+          >
+            <div className="flex flex-col space-y-4 p-6">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => scrollToSection('features-section')}
+                className="text-[#D4AF37] text-lg font-medium hover:text-white transition-colors text-left"
+              >
+                About us
+              </motion.button>
+              
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => scrollToSection('elite-club-section')}
+                className="text-[#D4AF37] text-lg font-medium hover:text-white transition-colors text-left"
+              >
+                Mission
+              </motion.button>
+              
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => scrollToSection('ciga-club-section')}
+                className="text-[#D4AF37] text-lg font-medium hover:text-white transition-colors text-left"
+              >
+                Ciga Cigar Club
+              </motion.button>
+              
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => scrollToSection('gold-card-section')}
+                className="text-[#D4AF37] text-lg font-medium hover:text-white transition-colors text-left"
+              >
+                Gold Passes
+              </motion.button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
