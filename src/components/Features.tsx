@@ -2,8 +2,40 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
+
+type Star = {
+  key: number;
+  style: {
+    width: string;
+    height: string;
+    top: string;
+    left: string;
+    backgroundColor: string;
+    animation: string;
+  };
+};
 
 const Features = () => {
+  const [stars, setStars] = useState<Star[]>([]);
+
+  useEffect(() => {
+    const generatedStars = [...Array(50)].map((_, i) => ({
+      key: i,
+      style: {
+        width: `${Math.random() * 3 + 1}px`,
+        height: `${Math.random() * 3 + 1}px`,
+        top: `${Math.random() * 100}%`,
+        left: `${Math.random() * 100}%`,
+        backgroundColor: `rgba(${
+          Math.random() > 0.5 ? '212,175,55' : '255,215,0'
+        },${Math.random() * 0.7 + 0.3})`,
+        animation: `twinkle ${Math.random() * 3 + 2}s ease-in-out infinite ${Math.random() * 3}s`
+      }
+    }));
+    setStars(generatedStars);
+  }, []);
+
   return (
     <>
       {/* Premium Cigars Section */}
@@ -255,20 +287,11 @@ const Features = () => {
       <section id="gold-card-section" className="w-full py-12 sm:py-16 md:py-20 lg:py-24 bg-[#1A1A1A] border-t border-white/10 relative overflow-hidden">
         {/* Twinkling Stars Container */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(26,26,26,0.8)_0%,#1A1A1A_100%)]">
-          {[...Array(50)].map((_, i) => (
+          {stars.map(star => (
             <div
-              key={i}
+              key={star.key}
               className="star absolute rounded-full"
-              style={{
-                width: `${Math.random() * 3 + 1}px`,
-                height: `${Math.random() * 3 + 1}px`,
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                backgroundColor: `rgba(${
-                  Math.random() > 0.5 ? '212,175,55' : '255,215,0'
-                },${Math.random() * 0.7 + 0.3})`,
-                animation: `twinkle ${Math.random() * 3 + 2}s ease-in-out infinite ${Math.random() * 3}s`
-              }}
+              style={star.style}
             />
           ))}
         </div>
