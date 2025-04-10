@@ -5,6 +5,7 @@ import Hero from '../components/Hero';
 import Features from '../components/Features';
 import Navbar from '../components/Navbar';
 import { motion } from 'framer-motion';
+import { useAuth } from "@crossmint/client-sdk-react-ui";
 
 // Define Footer Component Here
 const Footer = () => {
@@ -116,12 +117,39 @@ const Footer = () => {
   );
 };
 
+function AuthButton() {
+  const { login, logout, user } = useAuth();
+
+  return (
+    <div className="flex gap-4">
+      {user == null ? (
+        <button
+          type="button"
+          onClick={login}
+          className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
+        >
+          Login With Crossmint
+        </button>
+      ) : (
+        <button
+          type="button"
+          onClick={logout}
+          className="bg-black text-white font-bold py-2 px-4 rounded border-2 border-blue-500"
+        >
+          Logout
+        </button>
+      )}
+    </div>
+  );
+}
+
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between bg-[#1A1A1A]">
       <Navbar />
       <Hero />
       <Features />
+      <AuthButton />
       <Footer />
     </main>
   );
