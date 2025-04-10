@@ -11,7 +11,6 @@ export default function AuthButton() {
   const handleLogin = async () => {
     try {
       await login();
-      router.push('/profile');
     } catch (error) {
       console.error('Login failed:', error);
     }
@@ -23,7 +22,7 @@ export default function AuthButton() {
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold"
+          className="bg-yellow-500 text-black px-6 py-2 rounded-lg font-semibold"
           onClick={() => router.push('/profile')}
         >
           Profile
@@ -31,7 +30,7 @@ export default function AuthButton() {
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="bg-red-600 text-white px-6 py-2 rounded-lg font-semibold"
+          className="bg-yellow-600 text-black px-6 py-2 rounded-lg font-semibold"
           onClick={logout}
         >
           Logout
@@ -44,7 +43,7 @@ export default function AuthButton() {
     <motion.button
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      className="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold"
+      className="bg-yellow-500 text-black px-6 py-2 rounded-lg font-semibold"
       onClick={handleLogin}
     >
       Login with Crossmint
