@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
+import AuthButton from './AuthButton';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -74,6 +75,7 @@ const Navbar = () => {
           >
             Gold Passes
           </motion.button>
+          <AuthButton />
         </div>
 
         {/* Social Icons (Desktop) */}
