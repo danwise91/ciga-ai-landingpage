@@ -83,6 +83,14 @@ const Navbar = () => {
 
         {/* Social Icons (Desktop) */}
         <div className="hidden lg:flex items-center space-x-4">
+          {/* Login Text */}
+          <motion.span
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="text-[#D4AF37] text-sm sm:text-base font-medium hover:text-white transition-colors"
+          >
+            Login
+          </motion.span>
           {/* X Icon */}
           <motion.a 
             href="#" 
