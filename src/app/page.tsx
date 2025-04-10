@@ -149,7 +149,6 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Features />
-      <AuthButton />
       <Footer />
     </main>
   );
