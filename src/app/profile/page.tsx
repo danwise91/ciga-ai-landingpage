@@ -20,13 +20,24 @@ export default function ProfilePage() {
     }
   };
 
+  const handleSignOut = () => {
+    // Add sign-out logic here
+    window.location.href = '/';
+  };
+
   console.log('Wallet object:', wallet);
 
   if (!user) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-black">
         <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Please log in to view your profile</h1>
+          <h1 className="text-2xl font-bold mb-4 text-white">Please log in to view your profile</h1>
+          <button
+            onClick={() => window.location.href = '/'}
+            className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-lg transition-colors mt-4"
+          >
+            Login
+          </button>
         </div>
       </div>
     );
@@ -34,7 +45,13 @@ export default function ProfilePage() {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 py-16 relative">
+        <button
+          onClick={handleSignOut}
+          className="absolute top-4 right-4 bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg transition-colors"
+        >
+          Sign Out
+        </button>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
